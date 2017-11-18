@@ -1,0 +1,17 @@
+node:
+  build: .
+  dockerfile: node.dockerfile
+  command: bash -c "npm i && npm start"
+  volumes:
+    - .:/app
+    - /app/node_modules
+  ports:
+    - "3000:3000"
+  links:
+    - db
+db:
+  image: postgres
+  restart: always
+  environment:
+    POSTGRES_USER: root
+    POSTGRES_PASSWORD: root
