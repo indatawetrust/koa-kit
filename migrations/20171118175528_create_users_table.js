@@ -8,7 +8,6 @@ exports.up = function(knex, Promise) {
     t.dateTime('deletedAt').nullable();
     t.string('username').notNull();
     t.string('password').notNull();
-    t.text('decription').nullable();
   });
 };
 

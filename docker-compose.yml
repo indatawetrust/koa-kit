@@ -1,17 +1,16 @@
 node:
   build: .
   dockerfile: node.dockerfile
-  command: bash -c "npm i && npm start"
+  command: bash -c "npm i && ./node_modules/knex/lib/bin/cli.js migrate:latest && npm start"
   volumes:
     - .:/app
     - /app/node_modules
   ports:
-    - "3000:3000"
+    - "8000:8000"
   links:
     - db
 db:
   image: postgres
   restart: always
   environment:
-    POSTGRES_USER: root
-    POSTGRES_PASSWORD: root
+    POSTGRES_DB: testdb

@@ -16,7 +16,8 @@ var knex = require('koa2-knex');
 app.use(knex({
   client: 'pg',
   connection: {
-    host : '127.0.0.1',
+    host : 'db',
+    user: 'postgres',
     database : 'testdb'
   }
 }));
